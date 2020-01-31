@@ -53,11 +53,274 @@ def check(): # removes possibility
                         bp[8].remove(entry_num)
 
 
-def option_reducer(): # remove possibility of number if row, column, block has it
+def block_reducer(b_num, reduct):
+    for i in range(1, 10):
+        fst = -1
+        snd = -1
+        count = 0
+        for j in range(9):
+            if count > 2:
+                break
+            if i in reduct[j]:
+                if count is 0:
+                    fst = j
+                else:
+                    snd = j
+                count = count + 1
+        if count is 1:
+            if b_num is 0:
+                for n in range(0, 3):
+                    for m in range(0, 3):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 1:
+                for n in range(3, 6):
+                    for m in range(0, 3):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 2:
+                for n in range(6, 9):
+                    for m in range(0, 3):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 3:
+                for n in range(0, 3):
+                    for m in range(3, 6):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 4:
+                for n in range(3, 6):
+                    for m in range(3, 6):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 5:
+                for n in range(6, 9):
+                    for m in range(3, 6):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 6:
+                for n in range(0, 3):
+                    for m in range(6, 9):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 7:
+                for n in range(3, 6):
+                    for m in range(6, 9):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+            elif b_num is 8:
+                for n in range(6, 9):
+                    for m in range(6, 9):
+                        if i in ap[n][m]:
+                            ap[n][m].clear()
+                            display_board[n][m].insert(0, i)
+                            return
+        elif count is 2:
+            if snd - fst is 3: # column
+                if b_num is 0 :
+                    if fst or snd is 3:
+                        if snd is 3:
+                            for z in range(2, 9):
+                                ap[z][0].remove(i)
+                        else:
+                            ap[0][0].remove(i)
+                            for z in range(3, 9):
+                                ap[z][0].remove(i)
+                        return
+                    elif fst or snd is 4:
+                        if snd is 4:
+                            for z in range(2, 9):
+                                ap[1][z].remove(i)
+                        else:
+                            ap[1][0].remove(i)
+                            for z in range(3, 9):
+                                ap[1][z].remove(i)
+                        return
+                    elif fst or snd is 5:
+                        if snd is 5:
+                            for z in range(2, 9):
+                                ap[2][z].remove(i)
+                        else:
+                            ap[2][0].remove(i)
+                            for z in range(3, 9):
+                                ap[2][z].remove(i)
+                        return
+
+                elif b_num is 1 :
+                    if fst or snd is 3 :
+                        if snd is 3 :
+                            for z in range(0, 3) :
+                                ap[z][0].remove(i)
+                            for z in range(6, 9):
+                                ap[z][0].remove(i)
+                        else :
+                            for z in range(0, 4) :
+                                ap[z][0].remove(i)
+                            for z in range(7, 9):
+                                ap[z][0].remove(i)
+                        return
+                    elif fst or snd is 4 :
+                        if snd is 4 :
+                            for z in range(0, 3) :
+                                ap[z][0].remove(i)
+                            for z in range(6, 9):
+                                ap[z][0].remove(i)
+                        else :
+                            for z in range(0, 3) :
+                                ap[z][0].remove(i)
+                            for z in range(6, 9):
+                                ap[z][0].remove(i)
+                        return
+                    elif fst or snd is 5 :
+                        if snd is 5 :
+                            for z in range(0, 3) :
+                                ap[z][0].remove(i)
+                            for z in range(6, 9):
+                                ap[z][0].remove(i)
+                        else :
+                            for z in range(0, 3) :
+                                ap[z][0].remove(i)
+                            for z in range(6, 9):
+                                ap[z][0].remove(i)
+                        return
+                    return
+                elif b_num is 2 :
+                    if fst or snd is 3:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 5:
+                        return
+                elif b_num is 3 :
+                    if fst or snd is 3:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 5:
+                        return
+                elif b_num is 4 :
+                    if fst or snd is 3:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 5:
+                        return
+                elif b_num is 5 :
+                    if fst or snd is 3:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 5:
+                        return
+                elif b_num is 6 :
+                    if fst or snd is 3:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 5:
+                        return
+                elif b_num is 7 :
+                    if fst or snd is 3:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 5:
+                        return
+                elif b_num is 8 :
+                    if fst or snd is 3:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 5:
+                        return
+            elif snd - fst is 1: # row
+                if b_num is 0 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 1 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 2 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 3 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 4 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 5 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 6 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 7 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+                elif b_num is 8 :
+                    if fst or snd is 1:
+                        return
+                    elif fst or snd is 4:
+                        return
+                    elif fst or snd is 7:
+                        return
+
+
+
+def reducer(): # remove possibility of number if row, column, block has it
     row = takenOptions(rp)
     col = takenOptions(cp)
     blk = takenOptions(bp)
-    r, c, b = [[] for i in range(9)], [[] for i in range(9)], [[] for i in range(9)]
+    b = [[] for i in range(9)]
     for i in range(0, 3):
         for j in range(0, 3):
             for item in row[j]:
@@ -69,8 +332,7 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[0]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
-            r[j].append()
-    
+            b[0].append(ap[i][j])
         for j in range(3, 6) :
             for item in row[j] :
                 if item in ap[i][j] :
@@ -81,7 +343,7 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[3] :
                 if item in ap[i][j] :
                     ap[i][j].remove(item)
-
+            b[3].append(ap[i][j])
         for j in range(6, 9) :
             for item in row[j] :
                 if item in ap[i][j] :
@@ -92,9 +354,9 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[6] :
                 if item in ap[i][j] :
                     ap[i][j].remove(item)
+            b[6].append(ap[i][j])
 
     for i in range(3, 6):
-
         for j in range(0, 3):
             for item in row[j]:
                 if item in ap[i][j]:
@@ -105,7 +367,7 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[1]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
-
+            b[1].append(ap[i][j])
         for j in range(3, 6) :
             for item in row[j] :
                 if item in ap[i][j] :
@@ -116,6 +378,7 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[4] :
                 if item in ap[i][j] :
                     ap[i][j].remove(item)
+            b[4].append(ap[i][j])
 
         for j in range(6, 9) :
             for item in row[j] :
@@ -127,9 +390,9 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[7] :
                 if item in ap[i][j] :
                     ap[i][j].remove(item)
+            b[7].append(ap[i][j])
 
     for i in range(6, 9):
-
         for j in range(0, 3):
             for item in row[j]:
                 if item in ap[i][j]:
@@ -140,19 +403,19 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[2]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
+            b[2].append(ap[i][j])
 
         for j in range(3, 6):
             for item in row[j]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
-
             for item in col[i]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
-
             for item in blk[5]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
+            b[5].append(ap[i][j])
 
         for j in range(6, 9) :
             for item in row[j] :
@@ -166,8 +429,11 @@ def option_reducer(): # remove possibility of number if row, column, block has i
             for item in blk[8] :
                 if item in ap[i][j] :
                     ap[i][j].remove(item)
+            b[8].append(ap[i][j])
 
 
+    for i in range(9):
+        block_reducer(i, b[i])
 
 def solve():
     in_order = [[] for i in range(10)]
@@ -182,10 +448,11 @@ def solve():
         number = ap[i][j].pop(0)
         display_board[i][j].insert(0, number)
     check()
-    option_reducer()
-    print(ap[4][0], ap[]
-    print(bp[1])
-  #  solve()
+    reducer()
+    #solve()
+    for i in range(9):
+        for j in range(9):
+            print(i, ", ", j, ": ", ap[i][j])
 
 # finished methods
 def initialize() :
