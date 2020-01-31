@@ -15,7 +15,7 @@ rp, cp, bp = [[1, 2, 3, 4, 5, 6, 7, 8, 9] for i in range(9)], \
 ap = [[[1, 2, 3, 4, 5, 6, 7, 8, 9] for i in range(9)] for j in range(9)]
 
 
-def check():
+def check(): # removes possibility
     for i in range(9):
         for j in range(9):
             if len(display_board[i][j].get()) is 1:
@@ -53,10 +53,11 @@ def check():
                         bp[8].remove(entry_num)
 
 
-def option_reducer():
+def option_reducer(): # remove possibility of number if row, column, block has it
     row = takenOptions(rp)
     col = takenOptions(cp)
     blk = takenOptions(bp)
+    r, c, b = [[] for i in range(9)], [[] for i in range(9)], [[] for i in range(9)]
     for i in range(0, 3):
         for j in range(0, 3):
             for item in row[j]:
@@ -68,8 +69,32 @@ def option_reducer():
             for item in blk[0]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
+            r[j].append()
+    
+        for j in range(3, 6) :
+            for item in row[j] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in col[i] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in blk[3] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+
+        for j in range(6, 9) :
+            for item in row[j] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in col[i] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in blk[6] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
 
     for i in range(3, 6):
+
         for j in range(0, 3):
             for item in row[j]:
                 if item in ap[i][j]:
@@ -81,49 +106,41 @@ def option_reducer():
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
 
+        for j in range(3, 6) :
+            for item in row[j] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in col[i] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in blk[4] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+
+        for j in range(6, 9) :
+            for item in row[j] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in col[i] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+            for item in blk[7] :
+                if item in ap[i][j] :
+                    ap[i][j].remove(item)
+
     for i in range(6, 9):
+
         for j in range(0, 3):
             for item in row[j]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
-
             for item in col[i]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
-
             for item in blk[2]:
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
 
-    for i in range(0, 3):
-        for j in range(3, 6):
-            for item in row[j]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in col[i]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in blk[3]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-    for i in range(3, 6):
-        for j in range(3, 6):
-            for item in row[j]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in col[i]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in blk[4]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-    for i in range(6, 9):
         for j in range(3, 6):
             for item in row[j]:
                 if item in ap[i][j]:
@@ -137,47 +154,19 @@ def option_reducer():
                 if item in ap[i][j]:
                     ap[i][j].remove(item)
 
-    for i in range(0, 3):
-        for j in range(6, 9):
-            for item in row[j]:
-                if item in ap[i][j]:
+        for j in range(6, 9) :
+            for item in row[j] :
+                if item in ap[i][j] :
                     ap[i][j].remove(item)
 
-            for item in col[i]:
-                if item in ap[i][j]:
+            for item in col[i] :
+                if item in ap[i][j] :
                     ap[i][j].remove(item)
 
-            for item in blk[6]:
-                if item in ap[i][j]:
+            for item in blk[8] :
+                if item in ap[i][j] :
                     ap[i][j].remove(item)
 
-    for i in range(3, 6):
-        for j in range(6, 9):
-            for item in row[j]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in col[i]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in blk[7]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-    for i in range(6, 9):
-        for j in range(6, 9):
-            for item in row[j]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in col[i]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
-
-            for item in blk[8]:
-                if item in ap[i][j]:
-                    ap[i][j].remove(item)
 
 
 def solve():
@@ -194,7 +183,7 @@ def solve():
         display_board[i][j].insert(0, number)
     check()
     option_reducer()
-    print(ap[4][0])
+    print(ap[4][0], ap[]
     print(bp[1])
   #  solve()
 
